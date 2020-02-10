@@ -14,14 +14,29 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  -moz-filter: none;
+  -webkit-filter: none;
+  -ms-filter: none;
+  filter: none;
+}
+
+.App-header > * {
+    opacity: 1;
+  }
+
+  .App-header .content .inner {
+    max-height: none;
+    padding: 3rem 2rem;
+    opacity: 1;
+  }
+
+.App-body.is-preload #bg:before {
+  background-color: transparent;
+}
+
+.App-main article {
+  opacity: 1;
+  margin: 4rem 0 0 0;
 }
 
 .App-link {
