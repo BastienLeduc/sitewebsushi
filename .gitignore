@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+data/journal/WiredTigerLog.0000000001
+data/journal/WiredTigerPreplog.0000000001
+data/journal/WiredTigerPreplog.0000000002
