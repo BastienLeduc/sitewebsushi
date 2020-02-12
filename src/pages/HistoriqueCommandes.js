@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 
-export class Commander extends Component{
+export class HistoriqueCommandes extends Component{
     render(){
 
         return (
             <div>
-                PAGE COMMANDER !
+                PAGE HistoriqueCommandes !
             </div>
 
         );
     }
 }
-export default Commander;
+export default HistoriqueCommandes;
