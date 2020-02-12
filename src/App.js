@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import './css/main.css';
+import {Route,NavLink,HashRouter} from "react-router-dom";
+import Connexion from "./pages/Connexion";
+import Menu from "./pages/Menu";
+import Commander from "./pages/Commander";
+import Contact from "./pages/Contact";
 
-function App() {
+class App extends Component {
+  render(){
   return (
+    <HashRouter>
     <div>
       {/* Wrapper */}
       <div id="wrapper">
@@ -20,11 +27,15 @@ function App() {
           </div>
           <nav>
             <ul>
-              <li><a href="#">Connexion</a></li>
-              <li><a href="#">Menu</a></li>
-              <li><a href="#">Commander</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><NavLink to="/connexion">Connexion</NavLink></li>
+              <li><NavLink to="/menu">Menu</NavLink></li>
+              <li><NavLink to="/commander">Commander</NavLink></li>
+              <li><NavLink to="/contact">Contact</NavLink></li>
             </ul>
+            <Route path="/connexion" component={Connexion}/>
+            <Route path="/menu" component={Menu}/>
+            <Route path="/commander" component={Commander}/>
+            <Route path="/contact" component={Contact}/>
           </nav>
         </header>       
         {/* Footer */}
@@ -36,7 +47,8 @@ function App() {
       <div id="bg" />
       {/* Scripts */}
     </div>
+    </HashRouter>
   );
+  }
 }
-
 export default App;
