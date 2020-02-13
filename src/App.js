@@ -4,6 +4,7 @@ import './css/main.css';
 import { Route, NavLink, HashRouter } from "react-router-dom";
 import Connexion from "./pages/Connexion";
 import Menu from "./pages/Menu";
+import Profil from "./pages/Profil";
 import HistoriqueCommandes from "./pages/HistoriqueCommandes";
 import Contact from "./pages/Contact";
 
@@ -25,11 +26,12 @@ class App extends Component {
                     <li><NavLink to="/historiqueCommandes">Historique des commandes</NavLink></li>
                     <li><NavLink to="/contact">Contact</NavLink></li>
                   </ul>
-                  <Route path="/connexion" component={Connexion} />
-                  <Route path="/menu" component={Menu} />
-                  <Route path="/historiqueCommandes" component={HistoriqueCommandes} />
-                  <Route path="/contact" component={Contact} />
                 </nav>
+                <Route path="/connexion" component={Connexion} />
+                <Route path="/profil" component={Profil} />
+                <Route path="/menu" component={Menu} />
+                <Route path="/historiqueCommandes" component={HistoriqueCommandes} />
+                <Route path="/contact" component={Contact} />
               </div>
             </header>
             {/* Footer */}
