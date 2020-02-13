@@ -1,42 +1,41 @@
 import React, { Component } from 'react';
 import { Route, NavLink, HashRouter } from "react-router-dom";
+import { Navbar, NavItem, NavDropdown, MenuItem, Nav, Button } from 'react-bootstrap';
 import API from "../../utils/API";
-import { Button } from 'react-bootstrap';
+import { LinkContainer } from "react-router-bootstrap";
 
 class Board extends Component {
-    disconnect = () => {
-        API.logout();
-        window.location = "/";
-      };
+  disconnect = () => {
+    API.logout();
+    window.location = "/";
+  };
   render() {
     return (
       <HashRouter>
-        <div>
-          {/* Wrapper */}
-          <div id="wrapper">
-            {/* Header */}
-            <header id="header">
+      <div>
+        <div id="wrapper">
+          <header id="header">
+            <div className="App container">
               <div className="content">
-                <nav>
-                  <h1>Sushi team</h1>
-                  <ul>
-                    <li><Button onClick={this.disconnect}>Deconnexion</Button></li>
-                    <li><NavLink to="/menu">Menu</NavLink></li>
-                    <li><NavLink to="/historiqueCommandes">Historique des commandes</NavLink></li>
-                    <li><NavLink to="/contact">Contact</NavLink></li>
-                  </ul>
-                </nav>
+                <h1>Sushi team</h1>
+                <Navbar bg="light" expand="lg">
+                  <Nav>
+                    <NavItem className="primary" onClick={this.disconnect}>Deconnexion</NavItem>
+                    <NavItem className="primary" href="/profil">Profil</NavItem>
+                    <NavItem className="primary" href="/menu">Menu</NavItem>
+                    <NavItem className="primary" href="/historiqueCommandes">Historique des commandes</NavItem>
+                    <NavItem className="primary" href="/contact">Conatct</NavItem>
+                  </Nav>
+                </Navbar>
               </div>
-            </header>
-            {/* Footer */}
-            <footer id="footer">
-              <p className="copyright">© Alexandra Dion / Bastien Leduc / Malo Gicquel - Ei5 SAGI Polytech Angers</p>
-            </footer>
-          </div>
-          {/* BG */}
-          <div id="bg" />
-          {/* Scripts */}
+            </div>
+          </header>
+          <footer id="footer">
+            <p className="copyright">© Alexandra Dion / Bastien Leduc / Malo Gicquel - Ei5 SAGI Polytech Angers</p>
+          </footer>
         </div>
+        <div id="bg" />
+      </div>
       </HashRouter>
     );
   }
