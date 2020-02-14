@@ -6,6 +6,9 @@ const config = require("../config/config");
 
 const userSchema = mongoose.Schema(
   {
+    id: {
+      type: String
+    },
     email: {
       type: String,
       lowercase: true,
@@ -16,6 +19,24 @@ const userSchema = mongoose.Schema(
     password: {
       type: String,
       required: true
+    },
+    nom: {
+      type: String
+    },
+    prenom: {
+      type: String
+    },
+    adress: {
+      type: String
+    },
+    codepostal: {
+      type: String
+    },
+    ville: {
+      type: String
+    },
+    numtel: {
+      type: String
     }
   },
   { timestamps: { createdAt: "created_at" } }
