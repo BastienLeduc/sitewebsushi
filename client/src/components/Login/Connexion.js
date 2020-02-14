@@ -18,7 +18,7 @@ export class Connexion extends Component {
         try {
             const { data } = await API.login(email, password);
             localStorage.setItem("token", data.token);
-            window.location = "/board";
+            window.location = "/";
         } catch (error) {
             console.error(error);
         }

@@ -11,32 +11,15 @@ class Board extends Component {
   };
   render() {
     return (
-      <HashRouter>
-      <div>
-        <div id="wrapper">
-          <header id="header">
-            <div className="App container">
-              <div className="content">
-                <h1>Sushi team</h1>
-                <Navbar bg="light" expand="lg">
-                  <Nav>
-                    <NavItem className="primary" onClick={this.disconnect}>Deconnexion</NavItem>
-                    <NavItem className="primary" href="/profil">Profil</NavItem>
-                    <NavItem className="primary" href="/menu">Menu</NavItem>
-                    <NavItem className="primary" href="/historiqueCommandes">Historique des commandes</NavItem>
-                    <NavItem className="primary" href="/contact">Conatct</NavItem>
-                  </Nav>
-                </Navbar>
-              </div>
-            </div>
-          </header>
-          <footer id="footer">
-            <p className="copyright">© Alexandra Dion / Bastien Leduc / Malo Gicquel - Ei5 SAGI Polytech Angers</p>
-          </footer>
-        </div>
-        <div id="bg" />
-      </div>
-      </HashRouter>
+      <Navbar bg="light" expand="lg">
+        <Nav>
+          <NavItem className="primary" onClick={this.disconnect}>Deconnexion</NavItem>
+          <NavItem className="primary" href="/profil">Profil</NavItem>
+          <NavItem className="primary" href="/menu">Menu</NavItem>
+          <NavItem className="primary" href="/historiqueCommandes">Historique des commandes</NavItem>
+          <NavItem className="primary" href="/contact">Conatct</NavItem>
+        </Nav>
+      </Navbar>
     );
   }
 }

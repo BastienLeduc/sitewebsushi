@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, NavLink, HashRouter } from "react-router-dom";
+import { Navbar, NavItem, NavDropdown, MenuItem, Nav, Button } from 'react-bootstrap';
 import { Signup } from "./components/Signup/Signup.js";
 import { PrivateRoute } from "./components/PrivateRoute.js";
 import "./css/App.css";
@@ -10,8 +11,14 @@ import Menu from "./components/Menu";
 import Profil from "./components/Profil";
 import HistoriqueCommandes from "./components/HistoriqueCommandes";
 import Contact from "./components/Contact";
+import API from "./utils/API";
 
 class App extends Component {
+  state = { redirection: false }
+  disconnect = () => {
+    API.logout();
+    window.location = "/";
+  };
   render() {
     return (
       <div>
@@ -20,9 +27,9 @@ class App extends Component {
             <div className="content">
               <h1>Sushi team</h1>
               <Switch>
-                <Route exact path="/" component={Connexion} />
+                <Route exact path="/login" component={Connexion} />
                 <Route exact path="/signup" component={Signup} />
-                <PrivateRoute path="/board" component={Board} />
+                <PrivateRoute path="/" component={Board} />
               </Switch>
               <PrivateRoute path="/profil" component={Profil} />
               <PrivateRoute path="/menu" component={Menu} />
