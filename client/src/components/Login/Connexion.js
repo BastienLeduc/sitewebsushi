@@ -44,8 +44,8 @@ export class Connexion extends Component {
                         <ControlLabel>Password</ControlLabel>
                         <FormControl value={password} onChange={this.handleChange} type="password" />
                     </FormGroup>
-                    <button className="waves-effect waves-light btn pink remove" onClick={this.send} block bsSize="large" type="submit">Connexion</button>
-                    <button className="waves-effect waves-light btn pink remove" onClick={this.singup} block bsSize="large" type="submit">S'inscrire</button>
+                    <button className="waves-effect waves-light btn pink remove" onClick={this.send}  >Connexion</button>
+                    <button className="waves-effect waves-light btn pink remove" onClick={this.singup} >S'inscrire</button>
 
                 </div>
 
