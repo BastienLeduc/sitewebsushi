@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 export class Connexion extends Component {
     state = {

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, NavLink, BrowserRouter } from "react-router-dom";
-import { Navbar, NavItem, NavDropdown, MenuItem, Nav, Button } from 'react-bootstrap';
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { Signup } from "./components/Signup/Signup.js";
 import { PrivateRoute } from "./components/PrivateRoute.js";
 import "./css/App.css";
@@ -12,7 +11,6 @@ import Profil from "./components/Profil";
 import HistoriqueCommandes from "./components/HistoriqueCommandes";
 import Contact from "./components/Contact";
 import Cart from "./components/Cart";
-import API from "./utils/API";
 
 class App extends Component {
   render() {
