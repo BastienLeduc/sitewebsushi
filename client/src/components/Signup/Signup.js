@@ -138,8 +138,8 @@ export class Signup extends React.Component {
                                 </FormGroup>
                             </Col>
                         </Row>
-                        <button className="waves-effect waves-light btn pink remove" onClick={this.send}>S'inscrire</button>
-                        <button className="waves-effect waves-light btn pink remove" onClick={e => { this.showModal(e); }} >Pop</button>
+                        <Button className="waves-effect waves-light btn pink remove" onClick={this.send}>S'inscrire</Button>
+                        <Button className="waves-effect waves-light btn pink remove" onClick={e => { this.showModal(e); }} >Pop</Button>
                         <Popup show={this.state.popupShow} onClose={this.showModal} />
                     </Form>
                 </div>
