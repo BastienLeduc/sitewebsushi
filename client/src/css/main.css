@@ -1310,7 +1310,7 @@ input, select, textarea {
 
 		.my-modal .modal-content {
 			background-color: rgba(27, 31, 34, 0.85);
-
+		}
 		.card-panel {
 			-webkit-transition: -webkit-box-shadow .25s;
 			transition: -webkit-box-shadow .25s;
