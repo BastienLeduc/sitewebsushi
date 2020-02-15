@@ -1,11 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-export class HistoriqueCommandes extends Component{
-    render(){
+export class HistoriqueCommandes extends Component {
+    render() {
 
         return (
             <div>
-                PAGE HistoriqueCommandes !
+                <article>
+                    PAGE HistoriqueCommandes !
+                </article>
             </div>
 
         );
