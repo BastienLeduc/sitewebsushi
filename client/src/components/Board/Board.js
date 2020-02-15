@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Route, NavLink, HashRouter } from "react-router-dom";
-import { Navbar, NavItem, NavDropdown, MenuItem, Nav, Button } from 'react-bootstrap';
+import { Route, NavLink,Link, HashRouter } from "react-router-dom";
+import Navbar from './../Navbar'
 import API from "../../utils/API";
 import { LinkContainer } from "react-router-bootstrap";
 
@@ -10,6 +10,11 @@ class Board extends Component {
     window.location = "/";
   };
   render() {
+    return (
+      <Navbar/>
+    )
+  }
+  /*render() {
     return (
       <Navbar bg="light" expand="lg">
         <Nav>
@@ -21,6 +26,6 @@ class Board extends Component {
         </Nav>
       </Navbar>
     );
-  }
+  }*/
 }
 export default Board;

@@ -1,9 +1,13 @@
 //Importer nos dépendances
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import'./index.css';
+import './index.css';
 import App from './App';
+import cartReducer from './components/reducers/cartReduce';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+const store = createStore(cartReducer);
 
 
-ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
