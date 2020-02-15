@@ -1307,3 +1307,8 @@ input, select, textarea {
 			margin-bottom: 0;
 			text-transform: uppercase;
 		}
+
+
+		.my-modal .modal-content {
+			background-color: rgba(27, 31, 34, 0.85);
+		  }
