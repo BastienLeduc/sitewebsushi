@@ -20,7 +20,7 @@ class Menu extends Component {
 
                         <span className="card-title">{item.title}</span>
                         <p>{item.desc}</p>
-                        <p><b>Price: {item.price}$</b></p>
+                        <p><b>Prix: {item.price}€</b></p>
                     </div>
                 </div>
 

@@ -9,12 +9,12 @@ import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY,ADD_SHIPPING } from '
 
 const initState = {
     items: [
-        {id:1,title:'Winter body', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price:110,img:Item1},
-        {id:2,title:'Adidas', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price:80,img: Item2},
-        {id:3,title:'Vans', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",price:120,img: Item3},
-        {id:4,title:'White', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price:260,img:Item4},
-        {id:5,title:'Cropped-sho', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price:160,img: Item5},
-        {id:6,title:'Blues', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",price:90,img: Item6}
+        {id:1,title:'Sushi1', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price:30,img:Item1},
+        {id:2,title:'Sushi2', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price:20,img: Item2},
+        {id:3,title:'Sushi3', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",price:10,img: Item3},
+        {id:4,title:'Sushi4', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price:25,img:Item4},
+        {id:5,title:'Sushi5', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price:35,img: Item5},
+        {id:6,title:'Sushi6', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",price:15,img: Item6}
     ],
     addedItems:[],
     total: 0
