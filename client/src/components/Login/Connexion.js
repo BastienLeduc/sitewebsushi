@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 export class Connexion extends Component {
     state = {
@@ -44,11 +44,12 @@ export class Connexion extends Component {
                         <ControlLabel>Password</ControlLabel>
                         <FormControl value={password} onChange={this.handleChange} type="password" />
                     </FormGroup>
-                    <Button className="primary" onClick={this.send} block bsSize="large" type="submit">Connexion</Button>
-                    <Button className="primary" onClick={this.singup} block bsSize="large" type="submit">S'inscrire</Button>
+                    <button className="waves-effect waves-light btn pink remove" onClick={this.send} block bsSize="large" type="submit">Connexion</button>
+                    <button className="waves-effect waves-light btn pink remove" onClick={this.singup} block bsSize="large" type="submit">S'inscrire</button>
+
                 </div>
 
-            </article>
+            </article >
         );
     }
 }

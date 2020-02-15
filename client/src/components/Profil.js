@@ -1,11 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-export class Profil extends Component{
-    render(){
+export class Profil extends Component {
+    render() {
 
         return (
             <div>
-                PAGE Profil !
+                <article>
+                    PAGE Profil !
+                </article>
             </div>
 
         );
