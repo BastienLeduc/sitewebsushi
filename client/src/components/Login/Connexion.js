@@ -15,13 +15,16 @@ export class Connexion extends Component {
         if (!password || password.length === 0) {
             return;
         }
-        try {
-            const { data } = await API.login(email, password);
-            localStorage.setItem("token", data.token);
+        API.login(email, password).then(response => {
+            console.log(response)
+            localStorage.setItem("token", response.data.token);
             window.location = "/";
-        } catch (error) {
-            console.error(error);
-        }
+        })
+            .catch(error => {
+                console.log(error.response.data)
+            })
+
+
     };
     singup = (event) => {
         window.location = "/signup";
