@@ -64,7 +64,7 @@ db.once('open', function() {
       }
   );
   // compile schema to model
-  var Sushi = mongoose.model('sushi', sushiSchema);
+  var Sushi = mongoose.model('sushis', sushiSchema);
 
   // a document instance
   var sushi1 = new Sushi({ nom: 'Maki saumon',type:'maki',ingredient1: 'riz' ,ingredient2: 'nori',ingredient3: 'saumon',ingredient4: '',ingredient5: '', prix: 5.20, nombre: 6 });

@@ -47,10 +47,10 @@ const sushiSchema = mongoose.Schema(
 
 sushiSchema.methods = {
   getSushiByNom: function(nomsushi) {
-    return this.model('sushi').find({ nom: this.nom }, nomsushi);
+    return this.model('sushis').find({ nom: this.nom }, nomsushi);
   },
   getSushiByType: function(typesushi) {
-    return this.model('sushi').find({ type: this.type }, typesushi);
+    return this.model('sushis').find({ type: this.type }, typesushi);
   },
   getToken: function() {
     return jwt.encode(this, config.secret);
@@ -58,4 +58,4 @@ sushiSchema.methods = {
   
 };
 
-module.exports = mongoose.model("sushi", sushiSchema);
+module.exports = mongoose.model("sushis", sushiSchema);
