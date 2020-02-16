@@ -20,7 +20,7 @@ class Recipe extends Component {
 const mapStateToProps = (state) => {
     return {
         addedItems: state.addedItems,
-        total: state.total
+        total: state.total.toFixed(2)
     }
 }
 

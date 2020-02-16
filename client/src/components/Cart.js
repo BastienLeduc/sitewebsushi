@@ -32,7 +32,7 @@ class Cart extends Component {
                             <div className="item-desc">
                                 <span className="title">{item.title}</span>
                                 <p>{item.desc}</p>
-                                <b>Prix: {item.price}€</b>
+                                <b>Prix: {item.prix}€</b>
                                 <br></br>
                                 <b>Quantité: {item.quantity}</b>
                                 <div className="add-remove">

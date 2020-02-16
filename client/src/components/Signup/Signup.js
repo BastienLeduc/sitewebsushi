@@ -28,13 +28,13 @@ export class Signup extends React.Component {
         //la on spécifie que l'adresse est false (fausse) dès le début. Cela permet de pouvoir dire que si rien n'est entré dans le champ l'adresse est fausse.
         for (var j = 1; j < (a.length); j++) {
             //Ici, ouverture d'une boucle for à 1 qui permettra de tester du premier jusqu'au dernier caractère de l'adresse e-mail entrée.
-            if (a.charAt(j) == '@') {
+            if (a.charAt(j) === '@') {
                 // La on commence les conditions de tests. Ici on cherche l'@
                 if (j < (a.length - 4)) {
                     // Ici on regarde si il y a bien 4 caractère après le @
                     for (var k = j; k < (a.length - 2); k++) {
                         //on ouvre une seconde boucle pour
-                        if (a.charAt(k) == '.') testm = true;
+                        if (a.charAt(k) === '.') testm = true;
                         //on vérifie qu'il y ai bien un point et on met la variable testm à true (implicitement si toutes les conditions sont remplies) puis on ferme les conditions et boucles
                     }
                 }

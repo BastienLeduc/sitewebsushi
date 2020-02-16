@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addToCart } from './actions/cartActions'
 
-class Menu extends Component {
+class Shop extends Component {
     handleClick = (id) => {
         this.props.addToCart(id);
     }
@@ -12,15 +12,15 @@ class Menu extends Component {
             return (
                 <div className="card" key={item.id}>
                     <div className="card-image">
-                        <img src={item.img} alt={item.title} />
-                        <span to="/menu" className="btn-floating halfway-fab waves-effect waves-light red" onClick={() => { this.handleClick(item.id) }}><i className="material-icons">add</i></span>
+                        <img src={item.img} alt={item.nom} />
+                        <span to="/shop" className="btn-floating halfway-fab waves-effect waves-light red" onClick={() => { this.handleClick(item.id) }}><i className="material-icons">add</i></span>
                     </div>
 
                     <div className="card-content">
 
-                        <span className="card-title">{item.title}</span>
-                        <p>{item.desc}</p>
-                        <p><b>Prix: {item.price}€</b></p>
+                        <span className="card-title">{item.nom}</span>
+                        <p>{item.type}</p>
+                        <p><b>Prix: {item.prix}€</b></p>
                     </div>
                 </div>
 
@@ -51,4 +51,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu)
+export default connect(mapStateToProps, mapDispatchToProps)(Shop)

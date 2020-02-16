@@ -1,6 +1,7 @@
 import axios from "axios";
+
 const headers = {
-  "Content-Type": "application/json"
+  "Content-Type": "application/json; charset=utf-8"
 };
 const burl = "http://localhost:8800";
 
@@ -26,5 +27,8 @@ export default {
   },
   logout: function() {
     localStorage.clear();
+  },
+  getAllSushi: function(){
+    return axios.get(`${burl}/sushis/getallsushi`, { headers: headers });
   }
 };

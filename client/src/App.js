@@ -6,7 +6,7 @@ import "./css/App.css";
 import "./css/main.css";
 import Board from "./components/Board/Board.js";
 import Connexion from "./components/Login/Connexion.js";
-import Menu from "./components/Menu";
+import Shop from "./components/Shop";
 import Profil from "./components/Profil";
 import HistoriqueCommandes from "./components/HistoriqueCommandes";
 import Contact from "./components/Contact";
@@ -28,7 +28,7 @@ class App extends Component {
                 </Switch>
                 <PrivateRoute path="/profil" component={Profil} />
                 <PrivateRoute path="/panier" component={Cart} />
-                <PrivateRoute path="/shop" component={Menu} />
+                <PrivateRoute path="/shop" component={Shop} />
                 <PrivateRoute path="/historiqueCommandes" component={HistoriqueCommandes} />
                 <PrivateRoute path="/contact" component={Contact} />
               </div>

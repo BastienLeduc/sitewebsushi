@@ -3,7 +3,11 @@ const jwt = require("jwt-simple");
 const config = require("../config/config");
 
 const sushiSchema = mongoose.Schema(
-  {
+  {    
+    id: {
+      type:Number,
+      defaut : "To define"
+    },
     nom: {
       type: String,
       trim: true,
@@ -36,6 +40,9 @@ const sushiSchema = mongoose.Schema(
     nombre : {
       type: Number,
       defaut : "2"
+    },
+    img: {
+      type: String
     }
   },
   { 
