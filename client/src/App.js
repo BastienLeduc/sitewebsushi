@@ -27,7 +27,7 @@ class App extends Component {
                   <PrivateRoute path="/" component={Board} />
                 </Switch>
                 <PrivateRoute path="/profil" component={Profil} />
-                <PrivateRoute path="/pannier" component={Cart} />
+                <PrivateRoute path="/panier" component={Cart} />
                 <PrivateRoute path="/shop" component={Menu} />
                 <PrivateRoute path="/historiqueCommandes" component={HistoriqueCommandes} />
                 <PrivateRoute path="/contact" component={Contact} />
