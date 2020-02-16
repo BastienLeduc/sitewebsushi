@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Popup } from '../Popup';
 
 export class Connexion extends Component {
+    popupShow = e => {
+        this.setState({
+            show: !this.state.show
+        });
+    };
     state = {
         email: "",
-        password: ""
+        password: "",
+        msg_erreur: "",
+        show: false
     };
     send = async () => {
         const { email, password } = this.state;
@@ -22,6 +30,10 @@ export class Connexion extends Component {
         })
             .catch(error => {
                 console.log(error.response.data)
+                let msgbrut = JSON.stringify(error.response.data)
+                let msgsplit = msgbrut.split('"')
+                this.state.msg_erreur = msgsplit[3];
+                this.setState({ show: !this.state.show});
             })
 
 
@@ -47,6 +59,7 @@ export class Connexion extends Component {
                         <ControlLabel>Password</ControlLabel>
                         <FormControl value={password} onChange={this.handleChange} type="password" />
                     </FormGroup>
+                    <Popup show={this.state.show} onClose={this.popupShow}>{this.state.msg_erreur}</Popup>
                     <button className="waves-effect waves-light btn pink remove" onClick={this.send}  >Connexion</button>
                     <button className="waves-effect waves-light btn pink remove" onClick={this.singup} >S'inscrire</button>
 

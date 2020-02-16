@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Form, Row, Col, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import API from "../../utils/API";
-import { Popup } from './Popup';
+import { Popup } from '../Popup';
 
 export class Signup extends React.Component {
     popupShow = e => {
@@ -22,38 +22,30 @@ export class Signup extends React.Component {
         msg_erreur: "",
         show: false
     };
-    verifMail(a){
+    verifMail = a => {
         // On ouvre la fonction en lui envoyant la contenu du champ
         let testm = false;
-        /*
-        la on spécifie que l'adresse est false (fausse) dès le début. Cela permet de pouvoir dire que si rien n'est entré dans le champ l'adresse est fausse.
-        */
-
+        //la on spécifie que l'adresse est false (fausse) dès le début. Cela permet de pouvoir dire que si rien n'est entré dans le champ l'adresse est fausse.
         for (var j = 1; j < (a.length); j++) {
-
-            /*
-            Ici, ouverture d'une boucle for à 1 qui permettra de tester du premier jusqu'au dernier caractère de l'adresse e-mail entrée.
-            */
-
+            //Ici, ouverture d'une boucle for à 1 qui permettra de tester du premier jusqu'au dernier caractère de l'adresse e-mail entrée.
             if (a.charAt(j) == '@') {
                 // La on commence les conditions de tests. Ici on cherche l'@
                 if (j < (a.length - 4)) {
                     // Ici on regarde si il y a bien 4 caractère après le @
                     for (var k = j; k < (a.length - 2); k++) {
-                        // On ouvre une seconde boucle pour
+                        //on ouvre une seconde boucle pour
                         if (a.charAt(k) == '.') testm = true;
-                        /*
-                        on vérifie qu'il y ai bien un point et on met la variable testm à true (implicitement si toutes les conditions sont remplies) puis on ferme les conditions et boucles
-                        */
+                        //on vérifie qu'il y ai bien un point et on met la variable testm à true (implicitement si toutes les conditions sont remplies) puis on ferme les conditions et boucles
                     }
                 }
             }
         }
-    }
+        return testm
+    };
     send = async () => {
         const { email, password, cpassword, nom, prenom, adresse, codepostal, ville, numtel } = this.state;
-        if (!email || email.length === 0 || !verifMail(email)) {
-            this.state.msg_erreur = "L'email saisi est invalide"
+        if (!email || email.length === 0 || !this.verifMail(email)) {
+            this.state.msg_erreur = "L'email saisi est invalide. Mettre :   " + email + "  sous la forme __@_._"
             this.setState({
                 show: !this.state.show
             });
@@ -96,7 +88,7 @@ export class Signup extends React.Component {
             });
         }
         else if (!numtel || numtel.length <= 9 || isNaN(numtel)) {
-            this.state.msg_erreur = "Le numéro de téléphone saisi est invalide, il doit comporter au moins 10 chiffres sous la forme 0000000000"
+            this.state.msg_erreur = "Le numéro de téléphone saisi est invalide, il doit comporter au moins 10 chiffres sous la forme 0X XX XX XX XX"
             this.setState({
                 show: !this.state.show
             });
@@ -109,6 +101,10 @@ export class Signup extends React.Component {
             })
                 .catch(error => {
                     console.log(error.response.data)
+                    let msgbrut = JSON.stringify(error.response.data)
+                    let msgsplit = msgbrut.split('"')
+                    this.state.msg_erreur = msgsplit[3];
+                    this.setState({ show: !this.state.show});
                 })
         }
     };
