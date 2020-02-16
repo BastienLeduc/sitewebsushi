@@ -46,12 +46,7 @@ const sushiSchema = mongoose.Schema(
 );
 
 sushiSchema.methods = {
-  getSushiByNom: function(nomsushi) {
-    return this.model('sushis').find({ nom: this.nom }, nomsushi);
-  },
-  getSushiByType: function(typesushi) {
-    return this.model('sushis').find({ type: this.type }, typesushi);
-  },
+  
   getToken: function() {
     return jwt.encode(this, config.secret);
   }
