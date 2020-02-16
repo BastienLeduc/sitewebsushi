@@ -16,7 +16,7 @@ export class Popup extends React.Component {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <p>Merci de vérifier</p>
+                    <p>{this.props.children}</p>
                 </Modal.Body>
 
                 <Modal.Footer>
