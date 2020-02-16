@@ -4,9 +4,9 @@ import API from "../../utils/API";
 import { Popup } from './Popup';
 
 export class Signup extends React.Component {
-    showModal = e => {
+    popupShow = e => {
         this.setState({
-            popupShow: !this.state.popupShow
+            show: !this.state.show
         });
     };
     state = {
@@ -19,42 +19,59 @@ export class Signup extends React.Component {
         codepostal: "",
         ville: "",
         numtel: "",
-        popupShow: false
+        msg_erreur: "",
+        show: false
     };
     send = async () => {
-        const { email, password, cpassword, nom, prenom, adresse, codepostal, ville, numtel, popupShow } = this.state;
-        if (!email || email.length === 0) { return }
-        else if (!password || password.length === 0 || password !== cpassword) return;
-        else if (!nom || nom.length === 0) { return }
-        else if (!prenom || prenom.length === 0) return;
-        else if (!adresse || adresse.length === 0) return;
-        else if (!codepostal || codepostal.length !== 5) return;
-        else if (!ville || ville.length === 0) return;
-        else if (!numtel || numtel.length <= 10) return;
-        else {
-            try {
-                const { data } = await API.signup({ email, password });
-                localStorage.setItem("token", data.token);
-                window.location = "/";
-            } catch (error) {
-                console.error(error);
-            }
-        }
-    };
-    send2 = async () => {
-        const { email, password, cpassword, nom, prenom, adresse, codepostal, ville, numtel, popupShow } = this.state;
+        const { email, password, cpassword, nom, prenom, adresse, codepostal, ville, numtel } = this.state;
         if (!email || email.length === 0) {
-            //this.setState({ popupShow: true })
+            this.state.msg_erreur = "L'email saisi est invalide"
+            this.setState({
+                show: !this.state.show
+            });
         }
-        else if (!password || password.length === 0 || password !== cpassword) return;
+        else if (!password || password.length === 0 || password !== cpassword) {
+            this.state.msg_erreur = "Le password saisi est invalide ou est différent de celui de confirmation"
+            this.setState({
+                show: !this.state.show
+            });
+        }
         else if (!nom || nom.length === 0) {
-            //this.setState({ popupShow: true })
+            this.state.msg_erreur = "Le nom saisi est invalide"
+            this.setState({
+                show: !this.state.show
+            });
         }
-        else if (!prenom || prenom.length === 0) return;
-        else if (!adresse || adresse.length === 0) return;
-        else if (!codepostal || codepostal.length !== 5) return;
-        else if (!ville || ville.length === 0) return;
-        else if (!numtel || numtel.length <= 10) return;
+        else if (!prenom || prenom.length === 0) {
+            this.state.msg_erreur = "Le prénom saisi est invalide"
+            this.setState({
+                show: !this.state.show
+            });
+        }
+        else if (!adresse || adresse.length === 0) {
+            this.state.msg_erreur = "L'adresse saisie est invalide"
+            this.setState({
+                show: !this.state.show
+            });
+        }
+        else if (!codepostal || codepostal.length !== 5) {
+            this.state.msg_erreur = "Le code postal saisi est invalide, il doit comporter 5 chiffres"
+            this.setState({
+                show: !this.state.show
+            });
+        }
+        else if (!ville || ville.length === 0) {
+            this.state.msg_erreur = "La ville saisie est invalide"
+            this.setState({
+                show: !this.state.show
+            });
+        }
+        else if (!numtel || numtel.length <= 9) {
+            this.state.msg_erreur = "Le numéro de téléphone saisi est invalide, il doit comporter au moins 10 chiffres"
+            this.setState({
+                show: !this.state.show
+            });
+        }
         else {
             try {
                 const { data } = await API.signup({ email, password });
@@ -71,27 +88,26 @@ export class Signup extends React.Component {
         });
     };
     render() {
-        const { email, password, cpassword, nom, prenom, adresse, codepostal, ville, numtel, popupShow } = this.state;
-        let popupClose = () => this.setState({ popupShow: false });
-        console.log("*****popupShow*******", popupShow)
+        const { email, password, cpassword, nom, prenom, adresse, codepostal, ville, numtel } = this.state;
+
         return (
             <article className="active" >
                 <div className="Login">
                     <Form>
-                        <Row>
-                            <Col md={6}>
+                        <div className="row">
+                            <div className="col">
                                 <FormGroup controlId="email">
                                     <ControlLabel>Email</ControlLabel>
                                     <FormControl autoFocus type="email" placeholder="Entrez votre email" value={email} onChange={this.handleChange} />
                                 </FormGroup>
-                            </Col>
-                            <Col md={6}>
+                            </div>
+                            <div className="col">
                                 <FormGroup controlId="password">
                                     <ControlLabel>Password</ControlLabel>
                                     <FormControl type="password" placeholder="Entrez votre Password" value={password} onChange={this.handleChange} />
                                 </FormGroup>
-                            </Col>
-                        </Row>
+                            </div>
+                        </div>
                         <Row>
                             <Col md={6}>
                             </Col>
@@ -138,9 +154,9 @@ export class Signup extends React.Component {
                                 </FormGroup>
                             </Col>
                         </Row>
+                        <br></br>
+                        <Popup show={this.state.show} onClose={this.popupShow}>{this.state.msg_erreur}</Popup>
                         <Button className="waves-effect waves-light btn pink remove" onClick={this.send}>S'inscrire</Button>
-                        <Button className="waves-effect waves-light btn pink remove" onClick={e => { this.showModal(e); }} >Pop</Button>
-                        <Popup show={this.state.popupShow} onClose={this.showModal} />
                     </Form>
                 </div>
             </article>
