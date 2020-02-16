@@ -22,9 +22,37 @@ export class Signup extends React.Component {
         msg_erreur: "",
         show: false
     };
+    verifMail(a){
+        // On ouvre la fonction en lui envoyant la contenu du champ
+        let testm = false;
+        /*
+        la on spécifie que l'adresse est false (fausse) dès le début. Cela permet de pouvoir dire que si rien n'est entré dans le champ l'adresse est fausse.
+        */
+
+        for (var j = 1; j < (a.length); j++) {
+
+            /*
+            Ici, ouverture d'une boucle for à 1 qui permettra de tester du premier jusqu'au dernier caractère de l'adresse e-mail entrée.
+            */
+
+            if (a.charAt(j) == '@') {
+                // La on commence les conditions de tests. Ici on cherche l'@
+                if (j < (a.length - 4)) {
+                    // Ici on regarde si il y a bien 4 caractère après le @
+                    for (var k = j; k < (a.length - 2); k++) {
+                        // On ouvre une seconde boucle pour
+                        if (a.charAt(k) == '.') testm = true;
+                        /*
+                        on vérifie qu'il y ai bien un point et on met la variable testm à true (implicitement si toutes les conditions sont remplies) puis on ferme les conditions et boucles
+                        */
+                    }
+                }
+            }
+        }
+    }
     send = async () => {
         const { email, password, cpassword, nom, prenom, adresse, codepostal, ville, numtel } = this.state;
-        if (!email || email.length === 0) {
+        if (!email || email.length === 0 || !verifMail(email)) {
             this.state.msg_erreur = "L'email saisi est invalide"
             this.setState({
                 show: !this.state.show
@@ -54,8 +82,9 @@ export class Signup extends React.Component {
                 show: !this.state.show
             });
         }
-        else if (!codepostal || codepostal.length !== 5) {
+        else if (!codepostal || codepostal.length !== 5 || isNaN(codepostal)) {
             this.state.msg_erreur = "Le code postal saisi est invalide, il doit comporter 5 chiffres"
+
             this.setState({
                 show: !this.state.show
             });
@@ -66,20 +95,21 @@ export class Signup extends React.Component {
                 show: !this.state.show
             });
         }
-        else if (!numtel || numtel.length <= 9) {
-            this.state.msg_erreur = "Le numéro de téléphone saisi est invalide, il doit comporter au moins 10 chiffres"
+        else if (!numtel || numtel.length <= 9 || isNaN(numtel)) {
+            this.state.msg_erreur = "Le numéro de téléphone saisi est invalide, il doit comporter au moins 10 chiffres sous la forme 0000000000"
             this.setState({
                 show: !this.state.show
             });
         }
         else {
-            try {
-                const { data } = await API.signup({ email, password, nom, prenom, adresse, codepostal, ville, numtel  });
-                localStorage.setItem("token", data.token);
+            API.signup({ email, password, nom, prenom, adresse, codepostal, ville, numtel }).then(response => {
+                console.log(response)
+                localStorage.setItem("token", response.data.token);
                 window.location = "/";
-            } catch (error) {
-                console.error(error);
-            }
+            })
+                .catch(error => {
+                    console.log(error.response.data)
+                })
         }
     };
     handleChange = (event) => {
