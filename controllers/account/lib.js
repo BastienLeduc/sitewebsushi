@@ -2,7 +2,8 @@ const User = require("../../schema/schemaUser.js");
 const passwordHash = require("password-hash");
 
 async function signup(req, res) {
-  const { password, email } = req.body;
+  const { password, email ,nom , prenom, adresse, codepostal, ville ,numtel } = req.body;
+
   if (!email || !password) {
     //Le cas où l'email ou bien le password ne serait pas soumit ou nul
     return res.status(400).json({
@@ -12,7 +13,13 @@ async function signup(req, res) {
   // Création d'un objet user, dans lequel on hash le mot de passe
   const user = {
     email,
-    password: passwordHash.generate(password)
+    password: passwordHash.generate(password),
+    nom,
+    prenom,
+    adresse,
+    codepostal,
+    ville,
+    numtel
   };
   // On check en base si l'utilisateur existe déjà
   try {

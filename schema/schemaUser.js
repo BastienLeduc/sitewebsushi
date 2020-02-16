@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 const passwordHash = require("password-hash");
 const jwt = require("jwt-simple");
@@ -6,9 +5,6 @@ const config = require("../config/config");
 
 const userSchema = mongoose.Schema(
   {
-    id: {
-      type: String
-    },
     email: {
       type: String,
       lowercase: true,
@@ -21,22 +17,28 @@ const userSchema = mongoose.Schema(
       required: true
     },
     nom: {
-      type: String
+      type: String,
+      defaut : "nom to define"
     },
     prenom: {
-      type: String
+      type: String,
+      defaut : "prenom to define"
     },
     adress: {
-      type: String
+      type: String,
+      defaut : "adresse to define"
     },
     codepostal: {
-      type: String
+      type: String,
+      defaut : "codepostal to define"
     },
     ville: {
-      type: String
+      type: String,
+      defaut : "ville to define"
     },
     numtel: {
-      type: String
+      type: String,
+      defaut : "numtel to define"
     }
   },
   { timestamps: { createdAt: "created_at" } }
@@ -49,6 +51,7 @@ userSchema.methods = {
   getToken: function() {
     return jwt.encode(this, config.secret);
   }
+
 };
 
 module.exports = mongoose.model("User", userSchema);
