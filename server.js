@@ -2,7 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-
+var SushiSchema = require('./schema/schemaSushi.js');
 //Connexion à la base de donnée
 mongoose
   .connect("mongodb://localhost/db")
@@ -15,56 +15,14 @@ mongoose
   });
 
 var db = mongoose.connection;
-
+db.dropCollection('sushis')
 db.on('error',console.error.bind(console,'connection error'));
 
 db.once('open', function() {
   console.log("Connection Successful!");
   
-  var sushiSchema = mongoose.Schema(
-    {
-      nom: {
-        type: String,
-        trim: true,
-        unique: true,
-        required: true
-      },
-      type:{
-        type:String,
-        required: true
-      },
-      ingredient1: {
-        type: String
-      },
-      ingredient2: {
-        type: String
-      },
-      ingredient3: {
-        type: String
-      },
-      ingredient4: {
-        type: String
-      },
-      ingredient5: {
-        type: String
-      },
-      prix: {
-        type:Number,
-        defaut : "To define"
-      },
-      nombre : {
-        type: Number,
-        defaut : "2"
-      }
-    },
-    { 
-        timestamps: { 
-            createdAt: "created_at" 
-          } 
-      }
-  );
   // compile schema to model
-  var Sushi = mongoose.model('sushis', sushiSchema);
+  var Sushi = mongoose.model('sushis', SushiSchema.schema);
 
   // a document instance
   var sushi1 = new Sushi({ nom: 'Maki saumon',type:'maki',ingredient1: 'riz' ,ingredient2: 'nori',ingredient3: 'saumon',ingredient4: '',ingredient5: '', prix: 5.20, nombre: 6 });
@@ -159,8 +117,12 @@ app.use(function(req, res, next) {
 
 //Définition du routeur
 const router = express.Router();
-app.use("/user", router);
+app.use("/users", router);
 require(__dirname + "/controllers/userController")(router);
+app.use("/sushis", router);
+require(__dirname + "/controllers/sushiController")(router);
+app.use("/commandes", router);
+require(__dirname + "/controllers/commandeController")(router);
 
 //Définition et mise en place du port d'écoute
 const port = 8800;
