@@ -4,7 +4,7 @@ import API from "../utils/API";
 
 class Recipe extends Component {
     state = {
-        email: "bastien@test.com",
+        email: localStorage.getItem("email"),
         num: "2",
         contenu: this.props.addedItems,
         prix: this.props.total

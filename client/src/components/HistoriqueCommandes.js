@@ -3,7 +3,7 @@ import API from "../utils/API";
 
 const commandesTab = []
 
-API.getCommandeByMail("bastien@test.com").then(response => {
+API.getCommandeByMail(localStorage.getItem("email")).then(response => {
     for (let i = 0; i < response.data.data.length; i++) {
         commandesTab.push(response.data.data[i])
     }
@@ -20,22 +20,25 @@ export class HistoriqueCommandes extends Component {
                     return (
                         <div className="cart" key={commande.num}>
                             <h5>Commande Numero {commande.num}</h5>
-                            {
-                                commande.contenu.map(item => {
-                                    return (
-                                        <li className="collection-item avatar" key={item.id}>
-                                            <div className="item-img">
-                                                <img src={item.img} alt={item.img} className="" />
-                                            </div>
-                                            <div className="item-desc">
-                                                <span className="title">{item.title}</span>
-                                                <b>Prix: {item.prix}€</b>
-                                                <b>Quantité: {item.quantity}</b>
-                                            </div>
-                                        </li>
-                                    )
-                                })
-                            }
+                            <h5>Prix {commande.prix} €</h5>
+                            <table>
+                                <tbody>
+                                    {
+                                        commande.contenu.map(item => {
+                                            return (
+                                                <tr className="collection-item avatar" key={item.id}>
+                                                    <td className="item-img">
+                                                        <img src={item.img} alt={item.img} className="" />
+                                                    </td>
+                                                    <td className="title">{item.nom}</td>
+                                                    <td>Prix: {item.prix}€</td>
+                                                    <td>Quantité: {item.quantity}</td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                </tbody>
+                            </table>
                         </div>
 
                     )
@@ -43,7 +46,7 @@ export class HistoriqueCommandes extends Component {
             ) :
 
             (
-                <p>Aucune.</p>
+                <p>Aucun.</p>
             )
 
         return (
