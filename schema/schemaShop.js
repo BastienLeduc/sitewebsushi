@@ -19,7 +19,7 @@ const shopSchema = mongoose.Schema(
       type: Number,
       defaut: "To define"
     },
-    datecollecte: Timestamp
+    datecollecte: { type: Date, default: Date.now },
   },
   {
     timestamps: {
