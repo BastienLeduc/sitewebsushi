@@ -6,32 +6,32 @@ const shopSchema = mongoose.Schema(
   {
     email: {
       type: String,
-      trim: true,      
+      trim: true,
       required: true
     },
-    num:{
-      type:String,
+    num: {
+      type: String,
       required: true,
       unique: true
     },
-    contenu: [{ nomarticle:String }],    
+    contenu: [],
     prix: {
-      type:Number,
-      defaut : "To define"
+      type: Number,
+      defaut: "To define"
     }
   },
-  { 
-      timestamps: { 
-          createdAt: "created_at" 
-        } 
+  {
+    timestamps: {
+      createdAt: "created_at"
     }
+  }
 );
 
 shopSchema.methods = {
-  getToken: function() {
+  getToken: function () {
     return jwt.encode(this, config.secret);
   }
-  
+
 };
 
 module.exports = mongoose.model("commandes", shopSchema);
