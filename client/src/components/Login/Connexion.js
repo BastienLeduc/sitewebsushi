@@ -32,7 +32,7 @@ export class Connexion extends Component {
             .catch(error => {
                 console.log(error.response.data)
                 this.state.msg_erreur = error.response.data.text;
-                this.setState({ show: !this.state.show});
+                this.setState({ show: !this.state.show });
             })
 
 
@@ -49,6 +49,64 @@ export class Connexion extends Component {
         const { email, password } = this.state;
         return (
             <article className="active" >
+                <div className="contentSushi">
+                    <div className="sushi_container">
+                        <div id="sushi_1">
+                            <div className="seaweed">
+                                <div className="rice">
+                                    <div className="rice_grain_1" />
+                                    <div className="rice_grain_2" />
+                                    <div className="rice_grain_3" />
+                                    <div className="fish">
+                                        <div className="fish_lines_1" />
+                                        <div className="fish_lines_2" />
+                                    </div>
+                                    <div className="veggies">
+                                        <div className="veggie_1" />
+                                        <div className="veggie_2" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sushi_2">
+                            <div className="seaweed">
+                                <div className="rice">
+                                    <div className="rice_grain_1" />
+                                    <div className="rice_grain_2" />
+                                    <div className="rice_grain_3" />
+                                    <div className="fish">
+                                        <div className="fish_lines_1" />
+                                        <div className="fish_lines_2" />
+                                    </div>
+                                    <div className="veggies">
+                                        <div className="veggie_1" />
+                                        <div className="veggie_2" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sushi_3">
+                            <div className="seaweed">
+                                <div className="rice">
+                                    <div className="rice_grain_1" />
+                                    <div className="rice_grain_2" />
+                                    <div className="rice_grain_3" />
+                                    <div className="fish">
+                                        <div className="fish_lines_1" />
+                                        <div className="fish_lines_2" />
+                                    </div>
+                                    <div className="veggies">
+                                        <div className="veggie_1" />
+                                        <div className="veggie_2" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="chopstick_1" />
+                    <div className="chopstick_2" />
+                </div>
+
                 <div className="Login">
                     <FormGroup controlId="email" bsSize="large">
                         <ControlLabel>Email</ControlLabel>

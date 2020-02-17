@@ -206,6 +206,13 @@ position:absolute;
 }
 
 
+.contentSushi {
+  position:absolute;
+  top: -5%;
+  left:45%;
+  transform: translate(-50%, -50%);
+}
+
 #sushi_2 {
   left: 120px;
   position: relative;
