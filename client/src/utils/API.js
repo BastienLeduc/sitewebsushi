@@ -45,4 +45,7 @@ export default {
     return axios.post(`${burl}/commandes/createcommande`, send, { headers: headers });
 
   },
+  getCommandeByMail: function(send) {
+    return axios.get(`${burl}/commandes/getCommandeByMail/${send}`, { headers: headers });
+  },
 };

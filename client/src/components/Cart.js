@@ -30,7 +30,7 @@ class Cart extends Component {
                                 <img src={item.img} alt={item.img} className="" />
                             </div>
                             <div className="item-desc">
-                                <span className="title">{item.title}</span>
+                                <span className="title">{item.nom}</span>
                                 <p>{item.desc}</p>
                                 <b>Prix: {item.prix}€</b>
                                 <br></br>
