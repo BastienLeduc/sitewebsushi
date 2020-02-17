@@ -18,7 +18,8 @@ const shopSchema = mongoose.Schema(
     prix: {
       type: Number,
       defaut: "To define"
-    }
+    },
+    datecollecte: Timestamp
   },
   {
     timestamps: {

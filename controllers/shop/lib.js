@@ -1,15 +1,15 @@
 const Shop = require("../../schema/schemaShop.js");
 
 async function createCommande(req, res) {
-  const { email, num, contenu, prix } = req.body;
-  if (!email || !num || !contenu || !prix) {
+  const { email, num, contenu, prix, datecollecte } = req.body;
+  if (!email || !num || !contenu || !prix || !datecollecte) {
     //Le cas où l'email ou bien le password ou le prix ou le contenu ne serait pas soumit ou nul
     return res.status(400).json({
-      text: "Requête invalide"
+      text: "Requête invalide, un des champs est vide"
     });
   }
   // Création d'un objet shop
-  const shop = { email, num, contenu, prix };
+  const shop = { email, num, contenu, prix ,datecollecte};
 
   try {
     // On check si la commande existe en base
