@@ -108,6 +108,7 @@ export class Connexion extends Component {
                 </div>
 
                 <div className="Login">
+                    <h5>Un compte est requis pour accéder à l'application</h5>
                     <FormGroup controlId="email" bsSize="large">
                         <ControlLabel>Email</ControlLabel>
                         <FormControl autoFocus type="email" value={email} onChange={this.handleChange} />
