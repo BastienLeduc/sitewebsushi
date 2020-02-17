@@ -30,12 +30,17 @@ function comparaisonTab(a, b) {
 export class HistoriqueCommandes extends Component {
     render() {
         let commandes = commandesTab.length ?
+
             (
                 commandesTab.map(commande => {
+                    let datebrut = commande.datecollecte
+                    let datesplit = datebrut.split('T')
                     return (
+                        
                         <div className="cart" key={commande.num}>
                             <h5>Commande Numero {commande.num}</h5>
                             <h5>Prix {commande.prix} €</h5>
+                            <h5>Date de collecte {datesplit[0]}</h5>
                             <table>
                                 <tbody>
                                     {

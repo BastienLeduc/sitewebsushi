@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import API from "../utils/API";
-import { Popup } from './Popup';
+import { PopupErreur } from './PopupErreur';
+import { FormGroup, ControlLabel } from "react-bootstrap";
+import DatePicker from 'react-datepicker';
+import { endOfDay, addDays } from 'date-fns'
+import "react-datepicker/dist/react-datepicker.css";
 
 class Recipe extends Component {
     popupShow = e => {
@@ -11,10 +15,18 @@ class Recipe extends Component {
     };
     state = {
         email: localStorage.getItem("email"),
-        show: false
+        show: false,
+        datecollecte: null,
     };
+
+    handleDateChange = date => {
+        this.setState({
+            datecollecte: date,
+        })
+    }
+
     send = async () => {
-        const { email } = this.state;
+        const { email, datecollecte } = this.state;
         const contenu = this.props.addedItems
         const num = Math.round(new Date().getTime() / 1000);
         const prix = this.props.total;
@@ -23,7 +35,7 @@ class Recipe extends Component {
         }
         else {
 
-            API.addCommande({ email, num, contenu, prix }).then(response => {
+            API.addCommande({ email, num, contenu, prix, datecollecte }).then(response => {
                 window.location = "/";
             })
                 .catch(error => {
@@ -33,16 +45,32 @@ class Recipe extends Component {
                 })
         }
     }
-
     render() {
-
         return (
             <div className="container">
                 <div className="collection">
                     <li className="collection-item"><b>Total: {this.props.total} €</b></li>
                 </div>
+                <div className="dateClickandCollect">
+                    <FormGroup controlId="date">
+                        <ControlLabel>Date click&collect</ControlLabel>
+
+                        <DatePicker
+                            onChange={this.handleDateChange}
+                            selected={this.state.datecollecte}
+                            timeFormat="HH:mm"
+                            timeCaption="time"
+                            minDate={new Date()}
+                            maxDate={addDays(new Date(), 7)}
+                            timeIntervals={15}
+                            showTimeSelect
+                            dateFormat="d MMMM yyyy h:mm aa"
+                        />
+                    </FormGroup>
+                </div>
                 <div className="checkout">
-                    <Popup show={this.state.show} onClose={this.popupShow}>{this.state.msg_erreur}</Popup>
+                    <PopupErreur show={this.state.show} onClose={this.popupShow}>{this.state.msg_erreur}</PopupErreur>
+                    <br></br>
                     <button className="waves-effect waves-light btn" onClick={this.send}>Commander</button>
                 </div>
             </div>

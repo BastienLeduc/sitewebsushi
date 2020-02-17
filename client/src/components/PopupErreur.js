@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
 
-export class Popup extends React.Component {
+export class PopupErreur extends React.Component {
     onClose = e => {
         this.props.onClose && this.props.onClose(e);
     };
@@ -26,6 +26,6 @@ export class Popup extends React.Component {
         );
     }
 }
-export default Popup;
+export default PopupErreur;
 
 

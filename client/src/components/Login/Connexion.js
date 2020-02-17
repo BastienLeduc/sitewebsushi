@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import API from "../../utils/API";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import { Popup } from '../Popup';
+import { PopupErreur } from '../PopupErreur';
 
 export class Connexion extends Component {
     popupShow = e => {
@@ -58,7 +58,7 @@ export class Connexion extends Component {
                         <ControlLabel>Password</ControlLabel>
                         <FormControl value={password} onChange={this.handleChange} type="password" />
                     </FormGroup>
-                    <Popup show={this.state.show} onClose={this.popupShow}>{this.state.msg_erreur}</Popup>
+                    <PopupErreur show={this.state.show} onClose={this.popupShow}>{this.state.msg_erreur}</PopupErreur>
                     <button className="waves-effect waves-light btn pink remove" onClick={this.send}  >Connexion</button>
                     <button className="waves-effect waves-light btn pink remove" onClick={this.singup} >S'inscrire</button>
 

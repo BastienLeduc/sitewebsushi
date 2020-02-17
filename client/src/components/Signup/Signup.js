@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Form, Row, Col, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import API from "../../utils/API";
-import { Popup } from '../Popup';
+import { PopupErreur } from '../PopupErreur';
 
 export class Signup extends React.Component {
     popupShow = e => {
@@ -180,7 +180,7 @@ export class Signup extends React.Component {
                             </Col>
                         </Row>
                         <br></br>
-                        <Popup show={this.state.show} onClose={this.popupShow}>{this.state.msg_erreur}</Popup>
+                        <PopupErreur show={this.state.show} onClose={this.popupShow}>{this.state.msg_erreur}</PopupErreur>
                         <Button className="waves-effect waves-light btn pink remove" onClick={this.send}>S'inscrire</Button>
                     </Form>
                 </div>
