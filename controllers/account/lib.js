@@ -63,7 +63,7 @@ async function login(req, res) {
         text: "L'utilisateur n'existe pas"
       });
     if (!findUser.authenticate(password))
-      return res.status(401).json({
+      return res.status(402).json({
         text: "Mot de passe incorrect"
       });
     return res.status(200).json({
@@ -78,7 +78,9 @@ async function login(req, res) {
 }
 
 async function getUserbyEmail(req, res) {
-  const {email} = req.body;
+  console.log("lib "+req.params.email)
+  const email = req.params.email;
+  console.log(email)
   if (!email ) {
     //Le cas où l'email ne serait pas soumit ou nul
     return res.status(400).json({
@@ -86,8 +88,8 @@ async function getUserbyEmail(req, res) {
     });
   }
   try {
-    // On recupere les sushis
-    const findUser = await User.find({});
+    // On recupere l'utilisateur
+    const findUser = await User.findOne({email});
     if (!findUser)
       return res.status(401).json({
         text: "Il n'y a pas d'utilisateur à cet email'"
@@ -104,6 +106,7 @@ async function getUserbyEmail(req, res) {
 }
 
 //On exporte nos deux fonctions
-exports.getUserbyEmail = getUserbyEmail;
+
 exports.login = login;
 exports.signup = signup;
+exports.getUserbyEmail = getUserbyEmail;

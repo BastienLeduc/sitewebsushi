@@ -97,6 +97,7 @@ export class Signup extends React.Component {
             API.signup({ email, password, nom, prenom, adresse, codepostal, ville, numtel }).then(response => {
                 console.log(response)
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("email", email);
                 window.location = "/";
             })
                 .catch(error => {
