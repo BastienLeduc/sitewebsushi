@@ -1,13 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import API from "../utils/API";
+import { Popup } from './Popup';
 
 class Recipe extends Component {
+    popupShow = e => {
+        this.setState({
+            show: !this.state.show
+        });
+    };
     state = {
         email: localStorage.getItem("email"),
-        num: "2",
+        num: Math.round(new Date().getTime() / 1000),
         contenu: this.props.addedItems,
-        prix: this.props.total
+        prix: this.props.total,
+        show: false
     };
     send = async () => {
         const { email, num, contenu, prix } = this.state;
@@ -20,6 +27,8 @@ class Recipe extends Component {
             })
                 .catch(error => {
                     console.log(error.response.data)
+                    this.state.msg_erreur = error.response.data.text;
+                    this.setState({ show: !this.state.show });
                 })
         }
     }
@@ -32,6 +41,7 @@ class Recipe extends Component {
                     <li className="collection-item"><b>Total: {this.props.total} €</b></li>
                 </div>
                 <div className="checkout">
+                    <Popup show={this.state.show} onClose={this.popupShow}>{this.state.msg_erreur}</Popup>
                     <button className="waves-effect waves-light btn" onClick={this.send}>Commander</button>
                 </div>
             </div>
