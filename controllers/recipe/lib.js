@@ -120,7 +120,7 @@ async function getAllSushi(req, res) {
       return res.status(500).json({ error });
     }
 }
-//On exporte nos deux fonctions
+//On exporte nos fonctions
 
 exports.createSushi = createSushi;
 exports.getOneSushiByNom = getOneSushiByNom;

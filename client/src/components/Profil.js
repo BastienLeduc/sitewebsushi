@@ -1,12 +1,43 @@
 import React, { Component } from 'react';
+import { FormControl, ControlLabel } from "react-bootstrap";
+import API from "../utils/API";
 
-export class Profil extends Component {
+const state = {
+    //email: localStorage.getItem("email"),
+    email: "choupy4906@hotmail.fr",
+    nom: "",
+    prenom: "",
+    adresse: "",
+    codepostal: "",
+    ville: "",
+    numtel: "",
+    date: ""
+};
+API.getUserbyEmail("choupy4906@hotmail.fr").then(response => {
+    console.log(state.email)
+    console.log("***********")
+    console.log(response.data.data)
+    console.log("***********")
+})
+    .catch(error => {
+        console.log(error.response.data)
+    })
+    
+
+export class Profil extends Component {   
+    handleChange = (event) => {
+        this.setState({
+            [event.target.id]: event.target.value
+        });};
+
     render() {
-
+        console.log(state.email)
         return (
             <article>
                 <h3>Vous pouvez retrouver vos informations personnelles : </h3>
                 <div>
+                <ControlLabel>Date click&collect</ControlLabel>
+                <FormControl  type="datetime-local" value={state.data} onChange={this.handleChange}/>
                     <table>
                         <tbody>
                             <tr>

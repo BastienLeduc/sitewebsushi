@@ -30,5 +30,15 @@ export default {
   },
   getAllSushi: function(){
     return axios.get(`${burl}/sushis/getallsushi`, { headers: headers });
-  }
+  },
+  getUserbyEmail: function(email) {
+    return axios.get(`${burl}/user/getUserbyEmail`,
+      {
+        email
+      },
+      {
+        headers: headers
+      }
+    );
+  },
 };

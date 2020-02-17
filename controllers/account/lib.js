@@ -77,7 +77,33 @@ async function login(req, res) {
   }
 }
 
-//On exporte nos deux fonctions
+async function getUserbyEmail(req, res) {
+  const {email} = req.body;
+  if (!email ) {
+    //Le cas où l'email ne serait pas soumit ou nul
+    return res.status(400).json({
+      text: "Requête invalide"
+    });
+  }
+  try {
+    // On recupere les sushis
+    const findUser = await User.find({});
+    if (!findUser)
+      return res.status(401).json({
+        text: "Il n'y a pas d'utilisateur à cet email'"
+      });
+    else{
+      return res.status(200).json({
+        text: "Succès",
+        data: findUser
+      });
+    };
+    } catch (error) {
+      return res.status(500).json({ error });
+    }
+}
 
+//On exporte nos deux fonctions
+exports.getUserbyEmail = getUserbyEmail;
 exports.login = login;
 exports.signup = signup;

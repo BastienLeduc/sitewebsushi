@@ -101,9 +101,7 @@ export class Signup extends React.Component {
             })
                 .catch(error => {
                     console.log(error.response.data)
-                    let msgbrut = JSON.stringify(error.response.data)
-                    let msgsplit = msgbrut.split('"')
-                    this.state.msg_erreur = msgsplit[3];
+                    this.state.msg_erreur = error.response.data.text;
                     this.setState({ show: !this.state.show});
                 })
         }
