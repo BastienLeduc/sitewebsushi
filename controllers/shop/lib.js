@@ -54,9 +54,9 @@ async function getAllCommande(req, res) {
   }
 }
 
-async function getOneCommande(req, res) {
-  const { num } = req.body;
-  if (!num) {
+async function getCommandeByMail(req, res) {
+  const email = req.params.email;
+  if (!email) {
     //Le cas où le nom ne serait pas soumit ou nul
     return res.status(400).json({
       text: "Requête invalide"
@@ -64,16 +64,24 @@ async function getOneCommande(req, res) {
   }
   try {
     // On check si la commande existe en base
-    const findOneCommande = await Shop.findOne({ num: this.num }, num);
-    if (!findOneCommande)
+    const findIdCommande = await Shop.find({ email: email }, email);
+    if (!findIdCommande)
       return res.status(401).json({
         text: "Il n'y a pas de commandes"
       });
     else {
-      console.log(findOneCommande)
+      tab = []
+      for (let i = 0; i < findIdCommande.length; i++) {
+        try {
+          const commande = await Shop.findById({ _id: findIdCommande[i]._id });
+          tab.push(commande);
+        } catch (error) {
+          console.log(error);
+        }
+      }
       return res.status(200).json({
         text: "Succès",
-        data: findOneCommande
+        data: tab
       });
     };
   } catch (error) {
@@ -85,4 +93,4 @@ async function getOneCommande(req, res) {
 
 exports.createCommande = createCommande;
 exports.getAllCommande = getAllCommande;
-exports.getOneCommande = getOneCommande;
+exports.getCommandeByMail = getCommandeByMail;
