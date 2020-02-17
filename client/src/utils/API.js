@@ -31,7 +31,18 @@ export default {
   getAllSushi: function(){
     return axios.get(`${burl}/sushis/getallsushi`, { headers: headers });
   },
+  getUserbyEmail: function(email) {
+    return axios.get(`${burl}/user/getuserbyemail/${email}`,
+      {
+        email
+      },
+      {
+        headers: headers
+      }
+    );
+  },
   addCommande: function(send) {
     return axios.post(`${burl}/commandes/createcommande`, send, { headers: headers });
+
   },
 };

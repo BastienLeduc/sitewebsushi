@@ -37,7 +37,7 @@ async function createCommande(req, res) {
 
 async function getAllCommande(req, res) {
   try {
-    // On recupere la commande en base
+    // On recupere les commandes en base
     const findAllCommande = await Shop.find({});
     if (!findAllCommande)
       return res.status(401).json({

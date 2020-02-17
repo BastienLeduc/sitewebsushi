@@ -24,7 +24,7 @@ const userSchema = mongoose.Schema(
       type: String,
       defaut : "prenom to define"
     },
-    adress: {
+    adresse: {
       type: String,
       defaut : "adresse to define"
     },
