@@ -3,10 +3,10 @@ const jwt = require("jwt-simple");
 const config = require("../config/config");
 
 const sushiSchema = mongoose.Schema(
-  {    
+  {
     id: {
-      type:Number,
-      defaut : "To define"
+      type: Number,
+      defaut: "To define"
     },
     nom: {
       type: String,
@@ -14,8 +14,8 @@ const sushiSchema = mongoose.Schema(
       unique: true,
       required: true
     },
-    type:{
-      type:String,
+    type: {
+      type: String,
       required: true
     },
     ingredient1: {
@@ -34,30 +34,30 @@ const sushiSchema = mongoose.Schema(
       type: String
     },
     prix: {
-      type:Number,
-      defaut : "To define"
-    },
-    nombre : {
       type: Number,
-      defaut : "2"
+      defaut: "To define"
     },
     img: {
       type: String
+    },
+    quantity: {
+      type: Number,
+      defaut: "0"
     }
   },
-  { 
-      timestamps: { 
-          createdAt: "created_at" 
-        } 
+  {
+    timestamps: {
+      createdAt: "created_at"
     }
+  }
 );
 
 sushiSchema.methods = {
-  
-  getToken: function() {
+
+  getToken: function () {
     return jwt.encode(this, config.secret);
   }
-  
+
 };
 
 module.exports = mongoose.model("sushis", sushiSchema);

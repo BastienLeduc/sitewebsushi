@@ -41,4 +41,8 @@ export default {
       }
     );
   },
+  addCommande: function(send) {
+    return axios.post(`${burl}/commandes/createcommande`, send, { headers: headers });
+
+  },
 };
