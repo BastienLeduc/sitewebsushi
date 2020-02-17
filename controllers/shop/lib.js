@@ -35,25 +35,6 @@ async function createCommande(req, res) {
   }
 }
 
-async function getAllCommande(req, res) {
-  try {
-    // On recupere les commandes en base
-    const findAllCommande = await Shop.find({});
-    if (!findAllCommande)
-      return res.status(401).json({
-        text: "Il n'y a pas de commandes"
-      });
-    else {
-      return res.status(200).json({
-        text: "Succès",
-        data: findAllCommande
-      });
-    };
-  } catch (error) {
-    return res.status(500).json({ error });
-  }
-}
-
 async function getCommandeByMail(req, res) {
   const email = req.params.email;
   if (!email) {
@@ -92,5 +73,4 @@ async function getCommandeByMail(req, res) {
 //On exporte nos deux fonctions
 
 exports.createCommande = createCommande;
-exports.getAllCommande = getAllCommande;
 exports.getCommandeByMail = getCommandeByMail;
