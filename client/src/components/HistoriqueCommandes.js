@@ -7,10 +7,25 @@ API.getCommandeByMail(localStorage.getItem("email")).then(response => {
     for (let i = 0; i < response.data.data.length; i++) {
         commandesTab.push(response.data.data[i])
     }
+    commandesTab.sort(comparaisonTab);
 })
     .catch(error => {
         console.log(error.response)
     })
+
+function comparaisonTab(a, b) {
+    const numA = a.num;
+    const numB = b.num;
+
+    let comparison = 0;
+    if (numA > numB) {
+        comparison = -1;
+    } else if (numA < numB) {
+        comparison = 1;
+    }
+    return comparison;
+}
+
 
 export class HistoriqueCommandes extends Component {
     render() {
