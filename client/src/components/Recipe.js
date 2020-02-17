@@ -11,17 +11,18 @@ class Recipe extends Component {
     };
     state = {
         email: localStorage.getItem("email"),
-        num: Math.round(new Date().getTime() / 1000),
-        contenu: this.props.addedItems,
-        prix: this.props.total,
         show: false
     };
     send = async () => {
-        const { email, num, contenu, prix } = this.state;
+        const { email } = this.state;
+        const contenu = this.props.addedItems
+        const num = Math.round(new Date().getTime() / 1000);
+        const prix = this.props.total;
         if (!contenu || contenu.length === 0) {
             return;
         }
         else {
+
             API.addCommande({ email, num, contenu, prix }).then(response => {
                 window.location = "/";
             })
