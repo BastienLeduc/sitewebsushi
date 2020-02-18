@@ -28,5 +28,5 @@
 	- Faire une recherche de sushis par ingrédints (les ingrédients sont déjà en base et accessibles via react)
  
 ## Lien vers une démonstration de l’application : 
-	[Présentation vidéo](https://drive.google.com/file/d/1EnXF2prSJbXAUedxXkgvJEQu5gMdKAwo/view)
-	[Présentation slides](https://docs.google.com/presentation/d/1uHIVcxnBIB5wXgBUT5JOaMbCsju62ZTiKYl-iF8dXgg/edit#slide=id.g52ccb76ff5_1_0)
+	Présentation vidéo : https://drive.google.com/file/d/1EnXF2prSJbXAUedxXkgvJEQu5gMdKAwo/view
+	Présentation slides : https://docs.google.com/presentation/d/1uHIVcxnBIB5wXgBUT5JOaMbCsju62ZTiKYl-iF8dXgg/edit#slide=id.g52ccb76ff5_1_0
